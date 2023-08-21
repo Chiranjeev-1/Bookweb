@@ -641,3 +641,19 @@ def forum(request):
 
     }
     return render(request,"forum.html",context)
+
+
+def subscription(request):
+    profilei = Bio.objects.filter(user=request.user)
+    print(Bio.objects.filter(user=request.user).values())
+    profilecount = profilei.count()
+    if profilecount > 0:
+        for each in profilei.values_list("profileimage",flat=True):
+            if each != "":
+                profileimg = each
+
+    context={
+        "profilepic":profilei,
+        "profilecount":profilecount,
+    }
+    return render(request,"subscription.html",context)
