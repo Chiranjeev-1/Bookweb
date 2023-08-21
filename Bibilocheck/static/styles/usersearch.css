@@ -39,3 +39,12 @@ table {
   border-radius: 50%;
 
   }
+  #followimg{
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+  }
+  #followbutton{
+    background-color: transparent;
+    border: none;
+  }
