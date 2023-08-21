@@ -18,7 +18,7 @@
         <table>
                 <tr><th>Notifications</th></tr>
                 {% for notif in notifs %}
-                <td><h4 style="display: inline-block;">{{notif.notifby}} </h4> {{notif.notifstatement}}
+                <td><h4 style="display: inline-block;">{{notif.notifby}} &nbsp; </h4> {{notif.notifstatement}}
                 {% if notif.notifstatement == 'has requested to follow you!!' %}
                 <button id="add-friendbtn"><a href="{% url 'followaccept' profile=notif.notifby %}"><img src="{% static 'images\add-friend.png' %}" id="add-friend" alt=""></a></button>
 

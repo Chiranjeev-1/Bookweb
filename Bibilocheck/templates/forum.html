@@ -26,7 +26,7 @@
                 <div><img src="{{eachdata.profilephoto.url}}" alt="" id="profileimg"></div>
              <div><h4>{{eachdata.user}}</h4></div>
              </div>
-             <div><h3>{{eachdata.posttitle}}</h3></div>
+             <div id="title"><h3>{{eachdata.posttitle}}</h3></div>
         <div id="forumpost">{{eachdata.post}}</div>
     </div>
 
@@ -37,7 +37,7 @@
 </div>
 <div id="formdiv">
     
-    <form action="{% url 'forum' %}" method="POST">
+    <form action="{% url 'forum' %}" method="POST" id="forumform">
         {% csrf_token %}
         <div id="headerr"> <h1>Create Forum Thread</h1></div>
     <div id="userinfo">
