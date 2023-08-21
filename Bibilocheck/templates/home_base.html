@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles\home_base.css' %}">
+        <title>
+            {% block title %}
+            {% endblock %}
+
+            
+
+        </title>
+        
+        {% block css %}
+        {% endblock %}
+    </head>
+    <body>
+        <div id="header">
+            <div id="leftheader"> 
+                <img src="{% static 'images\Bibilocheck.svg' %}" alt="ertg" id="logo">
+                {% block leftheader %}
+                
+                {% endblock %}
+
+            </div>
+            <div id="middleheader">
+                {% block middleheader %}
+                
+                <div id="searchfilter">
+                    <img src="{% static 'images\icons\downarrow.png' %}" alt="" id="downarrow">
+                    <button id="filter">Filter</button>
+                    <div id="filteroptions">
+                        <button id="userfilter">User</button>
+                        <button id="contentfilter">Content</button>
+                    </div>
+                </div>
+
+                <form action="{% url 'searchresultpage' %}" method="POST" id="searchform">
+                    {% csrf_token %}
+                    <div id="searchdiv">
+                        <input type="hidden" id="filtervalue" name="filtervalue">
+                        <input type="text" name="search_input" id="search_input">
+                        <button type="submit" id="submitbutton"><img src="{% static 'images/search.svg' %}" alt="" id="search_icon"></button>
+                        
+                    </div>
+                </form>
+                {% endblock %}
+
+            </div>
+            <div id="rightheader">
+                {% block rightheader %}
+                <div id="headerbuttons">
+                    <button class="headerbutton" id="Dashboard"><a href="{% url 'home' %}">Dashboard</a></button>
+                <button class="headerbutton">Subscriptions</button>
+                <button class="headerbutton">Review</button>
+                <a href="{% url 'forum' %}"><button class="headerbutton" id="forum">Forum</button></a>
+                <a href="{% url 'lists' %}"><button class="headerbutton" id="lists">Lists</button></a>
+                
+                </div>
+
+                <img src="{% static 'images\icons\menu.svg' %}" alt="" id="optionsicon">
+
+                
+                {% block prof %}
+                <a href="{% url 'profile' %}"><button class="headerbutton" id="profile">Profile</button></a>
+                
+                {% endblock %}
+
+
+                
+                {% endblock %}
+                
+
+            </div>
+
+        </div>
+
+        <div id="options">
+            <button class="headerbutton">Dashboard</button>
+        <button class="headerbutton">Subscriptions</button>
+        <button class="headerbutton">Review</button>
+        <a href="{% url 'forum' %}"><button class="headerbutton">Forum</button></a>
+        <a href="{% url 'lists' %}"><button class="headerbutton">Lists</button></a>
+        <a href="{% url 'profile' %}"><button class="headerbutton" >Profile</button></a>
+        <button class="headerbutton" id="closeoptions">Close</button>
+        <div id="logoutuser" >
+            <a href="{% url 'logout' %}"><button class="headerbutton">Logout</button></a>
+        </div>
+        </div>
+        
+        
+
+        {% block content %}
+        
+        
+        {% endblock %}
+
+
+
+        {% block script %}
+        {% endblock %}
+
+<script src="{% static 'script\home_base.js' %}"> </script>
+        
+    </body>
+</html>

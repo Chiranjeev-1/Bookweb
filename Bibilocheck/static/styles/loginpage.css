@@ -1,0 +1,113 @@
+
+#maindiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 100vh;
+    
+}
+#rightheader{
+    padding: 0 40px;
+
+}
+#register{
+    border: none;
+    height: 50px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: rgb(76, 76, 196);
+    padding: 10px 0px;
+    width: 100%;
+    border-radius: 5px;
+    font-family: Geologica;
+    cursor: pointer;
+    padding: 0 20px;
+
+}
+
+:root {
+    --custom-height: calc(100vh - 150px);
+  }
+#form-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    border: solid rgb(244, 137, 118) 1px;
+    background-color: rgba(255, 255, 255, 0.633);
+    padding: 70px 50px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.508) ;
+
+    
+    
+}
+#lockimg{
+    height: 20px;
+    width: 30px;
+}
+#userimg{
+    height: 20px;
+    width: 30px;
+
+}
+.passworddiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    background-color: rgba(234, 236, 236, 0.903);;
+}
+form div div{
+    display: flex;
+    flex-direction: column;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+#Submit{
+    height: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Geologica;
+    color: white;
+    background-color: rgb(231, 86, 60);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+
+    
+    
+    
+}
+#Submit:hover{
+    background-color: rgb(233, 115, 94);
+}
+#Submit:active{
+    background-color: rgb(244, 137, 118);
+}
+
+.inputfield{
+    width: 400px;
+    font-size: 20px;
+    height: 40px;
+    font-weight: 500;
+    font-family: Geologica;
+    padding-left: 3px;
+    padding-top: 2px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(234, 236, 236, 0.903);
+}
+.inputfield:focus{
+    outline: solid rgb(231, 86, 60) ;
+    outline-width: 0px;
+}
+
+.passworddiv:focus{
+    border: solid rgb(231, 86, 60) ;
+    outline-width: 1px;
+}

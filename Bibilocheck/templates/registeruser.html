@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+
+<html>
+    
+    <head>
+
+        {% block css %}
+        <link rel="stylesheet" href="{% static 'styles/registeruser.css' %}">
+
+        {% endblock %}
+                
+    </head>
+    <body>
+        {% block rightheader %}
+        <a href="{% url 'loginpage' %}"><button id="loginbutton">Login</button></a>
+        {% endblock %}
+       
+        {% block content %}
+        <div id="maincontainer">
+            <div id="form-container">
+                <div id="registerdiv">
+                    <hr id="hr">
+                    <p>Register</p>
+                    <hr id="hr">
+                </div>
+
+                <form action="{% url 'registeruser' %}" method="POST">
+
+                    {% csrf_token %}
+                    
+
+
+                    <div>
+                        <label for="username">Username</label>
+                        <div class="inputdiv">
+                            <img src="{% static 'images\icons\person.svg' %}" alt="" class="image">
+                            {{form.username}}
+                    </div>
+                    </div>
+                    <div>
+                        <label for="password1">Password</label>
+                    <div class="inputdiv">
+                        <img src="{% static 'images\icons\icons8-lock.svg' %}" alt="" class="image">
+                        {{form.password1|add_class:"inputfield"}}
+                    </div>
+                    </div>
+                    <div>
+                        <label for="password2">Confirm Password</label>
+                    <div class="inputdiv">
+                        <img src="{% static 'images\icons\lock.png' %}" alt="" class="image">
+                        {{form.password2|add_class:"inputfield"}}
+                    </div>
+                    </div>
+        
+                    <div>
+                        <input type="submit" id="Submit">
+                    </div>
+                </form>
+
+                <hr>
+
+                <div id="googleregisterdiv">
+                    <a href='{% url "social:begin" "google-oauth2" %}' style="cursor: pointer;"><button>Register with google</button></a>
+                </div>
+
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>

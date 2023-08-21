@@ -1,0 +1,93 @@
+
+#Book_detail{
+    display: flex;
+    backdrop-filter: blur(50px);
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-direction: column;
+   
+    background-position: center center;
+    
+    flex-shrink: 1 ;
+    
+    height: 500px;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+    color: white ;
+    font-family: Geologica;
+    
+    
+    
+    text-align: center;
+
+
+}
+#Books{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 20px;
+    background-color: white;
+    
+    
+    flex-wrap: wrap;
+    
+    padding-top: 150px;
+    padding-bottom: 20px;
+    
+    
+
+}
+
+#Book_detail > * {
+    z-index: 0;
+}
+#Bookimg{
+    
+    height: 197px;
+    width: 128px;
+    background-color: transparent;
+    transition-duration: 300ms;
+
+
+}
+
+#Book_detail:hover #Bookimg{
+    transform: translateY(-150px);
+}
+#Bookbackgroundimg{
+    height: 500px;
+    width: 400px;
+    position: absolute;
+    z-index: 0;
+    background-size: contain;
+}
+#blurdiv{
+    height: 500px;
+    width: 400px;
+    position: absolute;
+    z-index: 0;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+}
+#title{
+    cursor: pointer;
+}
+#title:hover{
+    color: black;
+
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+#profileicon{
+    height: 40px;
+  width: 40px;
+  border-radius: 50%;
+
+  }

@@ -1,0 +1,45 @@
+{% extends 'home_base.html' %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles\content.css' %}" >
+{% endblock %}
+
+{% block content %}
+
+<div id="Books">
+    {% for Book in Books %}
+<div id="Book_detail">
+    <img src="{% static 'images\background.jpeg' %}" alt="" id="Bookbackgroundimg">
+    <div id="blurdiv"></div>
+    <img src="{{Book.imagelink}}" alt="" id="Bookimg">
+    <h2 id="">{{Book.author}}</h2>
+    <h4>{{Book.id}}</h4>
+    <h3 id="title"><a href="{% url 'Bookpage' value=Book.Bookid %}">{{Book.title}}</a></h3>
+    
+    <h4>{{Book.publisheddate}}</h4>
+    
+</div>
+
+
+{% endfor %}
+
+</div>
+
+
+{% endblock %}
+
+{% block prof %}
+{% if profilecount > 0 %}
+{% for each in profilepic %}
+{% if each.profileimage %}
+<a href="{% url 'profile' %}"><img src="{{ each.profileimage.url }}" alt="" id="profileicon"></a>
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endfor %}
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endblock %}

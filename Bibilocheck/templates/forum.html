@@ -1,0 +1,83 @@
+{% extends 'home_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles\forum.css' %}">
+{% endblock %}
+
+
+{% block  script %}
+<script src="{% static 'script\forum.js' %}"></script>
+{% endblock %}
+
+
+{% block  content %}
+
+
+<div id="maindiv">
+    <div id="contentdiv">
+        <div id="buttondiv"><button id="createthreadbtn">Create Thread</button></div>
+        {% for eachdata in forumdata %}
+        <div id="forumdiv">
+            
+             <div id="forumhead">
+                <div><img src="{{eachdata.profilephoto.url}}" alt="" id="profileimg"></div>
+             <div><h4>{{eachdata.user}}</h4></div>
+             </div>
+             <div><h3>{{eachdata.posttitle}}</h3></div>
+        <div id="forumpost">{{eachdata.post}}</div>
+    </div>
+
+    
+        {% endfor %}
+    
+    </div>
+</div>
+<div id="formdiv">
+    
+    <form action="{% url 'forum' %}" method="POST">
+        {% csrf_token %}
+        <div id="headerr"> <h1>Create Forum Thread</h1></div>
+    <div id="userinfo">
+        {% if profilecount > 0 %}
+        {% for each in profilepic %}
+        {% if each.profileimage %}
+        <a href="{% url 'profile' %}"><img src="{{ each.profileimage.url }}" alt="" id="profileicon"></a>
+        {% else %}
+        <a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+        {% endif %}
+        <h3>{{user}}</h3>
+        {{time}}
+    </div>
+        <div>{{form.posttitle|add_class:'posttitle'|add_class:'note'}}</div>
+        <div>{{form.post|add_class:"note"}}</div>
+        
+        <div id="footer">
+            <input type="submit" id="submit">
+            <div id="close">Close</div>
+        </div>
+
+    </form>
+</div>
+{% endblock %}
+
+
+{% block prof %}
+{% if profilecount > 0 %}
+{% for each in profilepic %}
+{% if each.profileimage %}
+<a href="{% url 'profile' %}"><img src="{{ each.profileimage.url }}" alt="" id="profileicon"></a>
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endfor %}
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endblock %}

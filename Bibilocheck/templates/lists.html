@@ -1,0 +1,135 @@
+{% extends 'home_base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles\lists.css' %}">
+{% endblock %}
+{% block content %}
+<div id="tablesdiv">
+    <div class="tablediv">
+        <table>
+            <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Completed</th>
+                <th>Score</th>
+                <th>Delete</th>
+            </tr>
+            
+        {% for Book in Bookscompleted %}
+        <tbody>
+        <tr>
+        <td><img src="{{Book.image}}" alt="" class="Thumbnail"></td>
+        <td><a href="{% url 'Bookdbpage' id=Book.Bookid %}">{{Book.title}}</a></td>
+        <td>{{Book.author}}</td>
+        <td>{{Book.status}}</td>
+        <td>{{Book.score}}</td>
+        <td><a href="{% url 'statusuploaddelete' id=Book.Bookid %}"><img src="{% static 'images\icons\icons8-trash.svg' %}" alt=""></a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        
+        </table>
+    </div>
+    <div class="tablediv">
+        <table>
+            <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Reading</th>
+                <th>Score</th>
+                <th>Delete</th>
+            </tr>
+            
+        {% for Book in Booksreading %}
+        <tbody>
+        <tr>
+        <td><img src="{{Book.image}}" alt="" class="Thumbnail"></td>
+        
+        <td><a href="{% url 'Bookdbpage' id=Book.Bookid %}">{{Book.title}}</a></td>
+        <td>{{Book.author}}</td>
+        <td>{{Book.status}}</td>
+        <td>{{Book.score}}</td>
+        <td><a href="{% url 'statusuploaddelete' id=Book.Bookid %}"><img src="{% static 'images\icons\icons8-trash.svg' %}" alt=""></a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        
+        </table>
+    </div>
+    <div class="tablediv">
+        <table>
+            <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Planning</th>
+                <th>Score</th>
+                <th>Delete</th>
+            </tr>
+            
+        {% for Book in Booksplanning %}
+        <tbody>
+        <tr>
+        <td><img src="{{Book.image}}" alt="" class="Thumbnail"></td>
+        <td><a href="{% url 'Bookdbpage' id=Book.Bookid %}">{{Book.title}}</a></td>
+        <td>{{Book.author}}</td>
+        <td>{{Book.status}}</td>
+        <td>{{Book.score}}</td>
+        <td><a href="{% url 'statusuploaddelete' id=Book.Bookid %}"><img src="{% static 'images\icons\icons8-trash.svg' %}" alt=""></a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        
+        </table>
+    </div>
+    <div class="tablediv">
+        <table>
+            <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Dropped</th>
+                <th>Score</th>
+                <th>Delete</th>
+            </tr>
+            
+        {% for Book in Booksdropped %}
+        <tbody>
+        <tr>
+        <td><img src="{{Book.image}}" alt="" class="Thumbnail"></td>
+        <td><a href="{% url 'Bookdbpage' id=Book.Bookid %}">{{Book.title}} </a></td>
+        <td>{{Book.author}}</td>
+        <td> {{Book.status}}</td>
+        <td>{{Book.score}}</td>
+        <td><a href="{% url 'statusuploaddelete' id=Book.Bookid %}"><img src="{% static 'images\icons\icons8-trash.svg' %}" alt=""></a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script src="{% static 'script/lists.js' %}"></script>
+
+{% endblock %}
+
+{% block prof %}
+{% if profilecount > 0 %}
+{% for each in profilepic %}
+{% if each.profileimage %}
+<a href="{% url 'profile' %}"><img src="{{ each.profileimage.url }}" alt="" id="profileicon"></a>
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endfor %}
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endblock %}

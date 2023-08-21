@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static  %}
+
+
+<html>
+    <head>
+        {% block css %}
+        <link rel="stylesheet" href="{% static 'styles\loginpage.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+
+        {% block leftheader %}
+                {% endblock %}
+
+                {% block rightheader %}
+                <a href="{% url 'registeruser' %}"><button id="register">Register</button></a>
+                {% endblock %}
+
+
+      
+
+        {% block content %}
+        <div id="maindiv"> 
+            <form action="{% url 'loginpage' %}" method="POST">
+                {% csrf_token %}
+                <div id="form-container">
+                    <div>
+                        <label for="">Username</label>
+                    <div class="passworddiv">
+                        <img src="{% static 'images\icons\person.svg' %}" alt="" id="userimg">
+                        
+                        <input type="text" name="username" class="inputfield">
+                    </div>
+                    </div>
+                    <div>
+                        <label for="">Password</label>
+                        <div class="passworddiv">
+                            <img src="{% static 'images\icons\icons8-lock.svg' %}" alt="" id="lockimg">
+                    <input type="password" name="password" class="inputfield">
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" id="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endblock %}
+
+    </body>
+</html>

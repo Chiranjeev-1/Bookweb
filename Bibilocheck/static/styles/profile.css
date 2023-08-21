@@ -1,0 +1,277 @@
+#profile{
+    color:rgb(229, 83, 83) ; 
+}
+#profile::before{
+    background-color: rgb(229, 83, 83);
+}
+table {
+    flex: 1;
+    border-collapse: collapse;
+    background-color: #efe8e8;
+    border-radius: 10px;
+    border-spacing:20px ;
+    max-width: 900px;
+    margin: 0 1rem;
+
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: center;
+    
+    
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .tablediv{
+    display: flex;
+    justify-content: center;
+    
+    
+    width: 100%;
+    
+
+  }
+  .tablediv:first-child{
+    margin-top: 200px;
+
+  }
+  .tablediv:last-child{
+    margin-bottom: 100px;
+  }
+  
+ 
+  
+  /* CSS for table row highlight */
+  .highlight {
+    background-color: rgb(197, 197, 195) !important;
+  }
+
+  .Thumbnail{
+    width: 25px;
+    height: 30px;
+  }
+  #tablesdiv{
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+  }
+
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #biodiv{
+    width: 100%;
+    margin-top: 100px;
+    
+    height: 600px;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+  }
+/* #header{
+    background: rgba(35,38,67,.5);
+} */
+
+#Bioformdiv{
+    display: none;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(20px);
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+#Bioform{
+    background-color: white;
+    padding: 40px 50px;
+    flex: 1;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+
+
+}
+.profiledisp{
+  width: 350px;
+  height: 350px;
+  border-radius:50% ;
+  
+}
+#biodisp{
+  display: flex;
+  margin-left: 20px;
+  
+  
+  align-items: center;
+}
+#dispdiv{
+  display: inline-block;
+  border-radius: 50%;
+
+backdrop-filter: blur(20px);
+  
+}
+#profdisp{
+  display: inline-block;
+  border-radius: 50%;
+
+
+
+}
+#username{
+  color: black;
+  font-size: 25px;
+  font-weight: 600;
+}
+#dispdatadiv{
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  margin-left: 20px;
+
+}
+#logouticon{
+  width: 20px;
+  height: 30px;
+
+}
+#logoutbtn{
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  padding: 1px 25px;
+  background-color:rgb(229, 83, 83)  ;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 18px;
+  cursor: pointer;
+
+  font-family: Geologica;
+}
+#editicon{
+  width: 20px;
+  height: 30px;
+  
+
+}
+#editbtn{
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  padding: 1px 25px;
+  background-color:rgb(229, 83, 83)  ;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 18px;
+  cursor: pointer;
+  width: fit-content;
+
+  font-family: Geologica;
+}
+#bannerimg{
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+
+}
+#followheaddiv{
+  width: 600px; border-radius: 30px; height: 50px; display: flex;
+  margin-top: 30px;
+  
+  
+
+}
+#followerheaddiv{
+  flex: 1; background-color: rgb(229, 83, 83)  ; color: white;border-top-left-radius: 30px; border-bottom-left-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  margin: 0 10px;
+  
+
+}
+#followingheaddiv{
+  flex: 1; color: black;background-color: white; border-top-right-radius: 30px;border-bottom-right-radius: 30px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  margin: 0 10px;
+
+}
+#followdiv{
+  height: 500px; width: 100%; background-color: teal;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+
+}
+#Followlist{
+  display: flex;
+  flex: 1;
+  width: 600px;
+  background-color: transparent;
+  margin-top: 20px;
+  justify-content: center;
+
+
+}
+.profilepic{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+#followtable{
+  
+  width: 100%;
+  height: fit-content;
+  
+}
+td,th{
+  text-align: center;
+  height: 40px;
+  
+}
+
+tr{
+  border-bottom: 1px solid grey;
+  
+}
+tr:nth-child(odd){
+  background-color: aliceblue;
+}
+
+
+#profileicon{
+  height: 40px;
+width: 40px;
+border-radius: 50%;
+
+}
+#followingtable{
+  width: 100%;
+  height: fit-content;
+
+}
+#followingdiv{
+  display: none;
+  flex: 1;
+  width: 600px;
+  background-color: transparent;
+  margin-top: 20px;
+  justify-content: center;
+}

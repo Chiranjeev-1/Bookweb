@@ -1,0 +1,56 @@
+{% extends 'home_base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles\usersearch.css' %}">
+{% endblock %}
+
+{% block content %}
+<div  id="tablediv">
+    <table>
+        <tr>
+        <th>Profile</th>
+        <th>Username</th>
+        <th>email</th>
+        <th>Follow</th>
+        </tr>
+        <tbody>
+            {% if statussearch != empty %}
+            <tr>
+                <td>Profile</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td><form action="{% url 'followrequest' profile=profile %}" method="POST">
+                    {% csrf_token %}
+                    <div id="profilerow">
+                        
+                        <button id="followbutton">follow</button>
+                    </div>
+                </form></td>
+                </tr>
+
+            {% else %}
+            <div> Emptysearch!!</div>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'script\usersearch.js' %}"></script>
+{% endblock %}
+
+{% block prof %}
+{% if profilecount > 0 %}
+{% for each in profilepic %}
+{% if each.profileimage %}
+<a href="{% url 'profile' %}"><img src="{{ each.profileimage.url }}" alt="" id="profileicon"></a>
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endfor %}
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endblock %}

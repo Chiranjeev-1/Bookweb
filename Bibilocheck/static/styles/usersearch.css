@@ -1,0 +1,41 @@
+table {
+    flex: 1;
+    border-collapse: collapse;
+    background-color: #efe8e8;
+    border-radius: 10px;
+    border-spacing:20px ;
+    max-width: 900px;
+    margin: 0 1rem;
+
+  }
+  
+  th, td {
+    padding: 10px;
+    
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  #tablediv{
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+    
+    width: 100%;
+    
+
+  }
+  
+ 
+  
+  /* CSS for table row highlight */
+  .highlight {
+    background-color: rgb(197, 197, 195) !important;
+  }
+
+  #profileicon{
+    height: 40px;
+  width: 40px;
+  border-radius: 50%;
+
+  }

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles\base.css' %}">
+        <title>
+            {% block title %}
+            {% endblock %}
+
+            
+
+        </title>
+        
+        {% block css %}
+        {% endblock %}
+    </head>
+    <body>
+        <div id="header">
+            <div id="leftheader"> 
+                <img src="{% static 'images\Bibilocheck.svg' %}" alt="ertg" id="logo">
+                {% block leftheader %}
+                
+                {% endblock %}
+
+            </div>
+            <div id="middleheader">
+                {% block middleheader %}
+                {% endblock %}
+
+            </div>
+            <div id="rightheader">
+                {% block rightheader %}
+                {% endblock %}
+
+            </div>
+
+        </div>
+
+        {% block content %}
+        {% endblock %}
+
+
+
+        {% block script %}
+        {% endblock %}
+
+
+        
+    </body>
+</html>

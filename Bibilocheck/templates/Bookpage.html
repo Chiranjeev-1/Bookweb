@@ -1,0 +1,105 @@
+{% extends 'home_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles\Bookpage.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="Bookmaincontainer">
+{% for Book in Books %}
+    {% if Bookid == Book.Bookid %}
+    
+    <div id="Bookdetail" >
+      <div>
+        <img src="{{Book.imagelink}}" alt="" id="Bookimg">
+      </div> 
+    <div id="Bookdata">
+        <h2>{{Book.title}}</h2>
+        <h3>{{Book.author}}</h3>
+        <h4>{{Book.publisheddate}}</h4>
+        <p>{{Book.description}}</p>
+
+        
+    </div>
+    <div id="statusdiv"><button id="Status">Status</button></div>
+    </div>
+    {% endif %}
+
+{% endfor %}
+
+
+
+<div id="savestatusdiv">
+  <form action="{% url 'Bookpage' value=Bookid %}" method="POST" id="statusform">
+            
+    {% csrf_token %}
+
+    
+
+    <div id="sstatus">
+        <div id="statusdivv">
+            <div class="statusrow">
+                
+
+                <div class="statusdivs">
+                    <label for="">status</label>
+                <div>{{Form.status|add_class:"statusfield"|add_class:"inputfield"}}</div>
+                </div>
+                <div class="statusdivs">
+                    <label for="score">score</label>
+                    <div>{{Form.score|add_class:"score"|add_class:"inputfield"}}</div>
+                </div>
+            </div>
+            <div class="statusrow">
+                <div class="statusdivs">
+                    <label for="">startdate</label>
+                <div>{{Form.startdate|add_class:"date"|add_class:"inputfield"}}</div>
+                </div>
+                <div class="statusdivs">
+                    <label for="">completedate</label>
+                <div>{{Form.completedate|add_class:"date"|add_class:"inputfield"}}</div>
+                </div>
+        
+            </div>
+            <div class="statusrow">
+                {{Form.note|add_class:"note"|add_class:"inputfield"}}
+            </div>
+            <div id="footer"><input type="submit" id="submit">
+                <p id="closestatusdiv">close</p></div>
+        </div>
+    </div>
+
+
+    
+    
+    
+    
+    
+</form> 
+  
+
+
+
+</div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'script\Bookpage.js' %}"></script>
+{% endblock %}
+
+{% block prof %}
+{% if profilecount > 0 %}
+{% for each in profilepic %}
+{% if each.profileimage %}
+<a href="{% url 'profile' %}"><img src="{{ each.profileimage.url }}" alt="" id="profileicon"></a>
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endfor %}
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endblock %}

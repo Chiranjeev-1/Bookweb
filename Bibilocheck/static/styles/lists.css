@@ -1,0 +1,70 @@
+table {
+    flex: 1;
+    border-collapse: collapse;
+    background-color: #efe8e8;
+    border-radius: 10px;
+    border-spacing:20px ;
+    max-width: 900px;
+    margin: 0 1rem;
+
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: center;
+    
+    
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .tablediv{
+    display: flex;
+    justify-content: center;
+    
+    
+    width: 100%;
+    
+
+  }
+  .tablediv:first-child{
+    margin-top: 200px;
+
+  }
+  .tablediv:last-child{
+    margin-bottom: 100px;
+  }
+  
+ 
+  
+  /* CSS for table row highlight */
+  .highlight {
+    background-color: rgb(197, 197, 195) !important;
+  }
+
+  .Thumbnail{
+    width: 25px;
+    height: 30px;
+  }
+  #tablesdiv{
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+  }
+  #lists{
+    color: rgb(229, 83, 83);
+  }
+  #lists:before{
+    background-color: rgb(229, 83, 83);
+    
+  }
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+  #profileicon{
+    height: 40px;
+  width: 40px;
+  border-radius: 50%;
+
+  }

@@ -1,0 +1,253 @@
+
+#rightheader{
+    display: flex;
+    margin: 0 40px;
+    column-gap: 10px;
+}
+#registerbutton{
+    border: none;
+    height: 50px;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 0px;
+    width: 100%;
+    border-radius: 5px;
+    font-family: Geologica;
+    cursor: pointer;
+    padding: 0 20px;    
+
+}
+#signinwithgooglebutton{
+    border: none;
+    height: 50px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: rgb(76, 76, 196);
+    padding: 10px 0px;
+    width: 100%;
+    border-radius: 5px;
+    font-family: Geologica;
+    cursor: pointer;
+    padding: 0 20px;
+}
+#maincontainer{
+    margin-top:100px ;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+
+}
+a{
+    text-decoration: none;
+}
+
+#bust{
+    
+    filter: drop-shadow(5px 5px 30px rgb(151, 151, 151));
+    z-index: 0;
+    position: absolute;
+    left: -320px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    
+    
+}
+#bustdiv{
+    display: flex;
+    
+    width: 300px;
+    
+    
+}
+#box{
+    margin-top: 100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    max-width: 1000px;
+    height: 400px;
+    width: 100%;
+    border-radius: 30px;
+    margin-left: 150px;
+    margin-right: 20px;
+}
+#textbox{
+    flex: 1;
+    color: white;
+    font-family: Geologica;
+    width: 50%;
+    text-align: center;
+    font-weight: 600px;
+    font-size: 25px;
+    width: 100%;
+}
+#featuresdiv{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 150;
+    margin-top: 200px;
+    gap: 20px;
+    justify-content: space-around;
+}
+#featuresdiv div{
+    display: flex;
+    flex-direction: column;
+    background-color: #0d0c22;
+    width: 300px;
+    height: 350px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+    row-gap: 30px;
+    text-align: center;
+    border-radius: 10px;
+}
+.icons{
+    height: 150px;
+    filter: drop-shadow(2px 2px 10px white);
+    transition-duration: 400ms;
+    
+}
+
+p{
+    color: white;
+    font-size: 20px;
+    font-family: Geologica;
+    font-weight: 550;
+    margin: 0 20px;
+}
+
+#Bookgrid{
+    display: grid;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    color: #333333;
+    
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill,400px);
+    align-items: stretch;
+    padding-left: 3rem;
+    padding-right: 2rem;
+    padding-top: 20px;
+    gap: 2rem;
+    margin-top: 5rem;
+    transition-duration: 400ms;
+    grid-auto-rows: 1fr;
+    margin-bottom: 20px;
+    
+
+
+}
+#Book{
+    background-size: cover;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    color: #333333 ;
+    justify-content: center;
+    background-color: #F1F1F1;
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    font-family: Geologica;
+    gap: 1rem;
+    text-decoration: none;
+    flex-direction: column;
+    transition-duration: 300ms;
+    
+}
+img{
+    transition-duration: 300ms;
+    
+}
+#Book:hover img{
+    transform: translateY(-100px);
+}
+#Title:hover{
+    cursor: pointer;
+    color: rgb(119, 119, 240);
+}
+/* #box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+    padding: 40px 0;
+    background-color: black;
+    color: white;
+    font-family: Geologica;
+    height: 400px;
+    flex: 1;
+    width: fit-content;
+    max-width: 250px;
+    margin-left: 40px;
+    border-radius: 10px;
+    width: 100%;
+    align-items: center;
+    
+}
+p{
+    font-size: 25px;
+    font-family: Geologica;
+}
+#bust{
+    height: 300px;
+    filter: drop-shadow(5px 5px 10px grey);
+    z-index: 0;
+    
+}
+#bustdiv{
+    display: flex;
+    position: relative;
+    align-items: center;
+    display: flex;
+    width: 100%;
+
+    
+}
+#bustdiv:after{
+    content: "";
+    font-size: 2rem;
+    left: 20rem;
+    position: absolute;
+    color: white;
+    width: fit-content;
+    transform-origin: left;
+    transition-duration: 700ms;
+
+    
+
+}
+#bustdiv:hover:after{
+    content: '" Niggas wanna see me falling.  "';
+    transform: scaleX(100%);
+}
+
+#Explore{
+    border: none;
+    background-color: white;
+    height: fit-content;
+    padding: 15px 40px;
+    font-weight: 550;
+    font-family: Geologica;
+    font-size: 18px;
+
+}
+#buttondiv{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 30px;
+    margin-top: 10px ;
+    align-items: center;
+
+
+
+} */

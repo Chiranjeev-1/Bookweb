@@ -1,0 +1,319 @@
+{% extends 'home_base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles\profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<div id="biodiv">
+    
+    {% if  bannerexists %}
+    <img src="{{ bimage }}" id="bannerimg" alt="">
+    {% else %}
+    <img src="{% static 'images\banner.jpg' %}" id="bannerimg" alt="">
+    {% endif %}
+    <div id="biodisp">
+
+        {% if not profileexists %}
+        <div id="dispdiv"><img src="{% static 'images\usericon.png' %}" alt="" class="profiledisp"></div>
+        {% else %}
+        
+        <div id="profdisp"><img src="{{ pimage }}" alt="abcd" class="profiledisp"></div>
+        
+        {% endif %}
+        <div id="dispdatadiv">
+            {% for name in username %}
+            <h3 id="username">{{name.username}}</h3>
+            {%  endfor %}
+            <button id="editbtn">Edit <img src="{% static 'images\edit.svg' %}" alt="" id="editicon"></button>
+            <a href="{% url 'logout' %}"><button id="logoutbtn"><p>Logout</p><img src="{% static 'images\logout.svg' %}" alt="" id="logouticon"> </button></a>
+        </div>
+        
+        
+    </div>
+    
+    <div id="Bioformdiv">
+        <div>
+            <form action="{% url 'profile' %}" method="POST" id="Bioform" enctype="multipart/form-data" >
+                {% csrf_token %}
+                {{form.username}}
+                {{form.profileimage}}
+                {{form.Banner}}
+                {{form.selfdescription}}
+                <input type="submit">
+                
+                
+            </form>
+            
+        </div>
+    </div>
+
+
+</div>
+<div  id="followdiv">
+    <div id="followheaddiv" >
+    <div id="followerheaddiv"  >
+        <h3>
+            Follower
+        </h3>
+
+    </div>
+    <div id="followingheaddiv" >
+        <h3>Following</h3>
+
+    </div>
+    </div>
+    <div id="Followlist">
+        
+        
+            <table id="followtable">
+                <tr>
+                    <th>Profile</th>
+                    <th>Name</th>
+                    <th>Delete</th>
+                </tr>
+            
+            {% for follower in followersdetail %}
+            <tr>
+            {% if follower.followerprofile %}
+                
+            {% for every in follower.followerprofile %}
+             {% if every.profileimage %}
+            <td><img src="{{ every.profileimage.url }}" alt="" class="profilepic"></td>
+            {% else %}
+            <td><img src="{% static 'images\usericon.png' %}" alt="" class="profilepic"></td>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            <td><img src="{% static 'images\usericon.png' %}" alt="" class="profilepic"></td>
+            {% endif %}
+            
+            
+            
+            <td>{{follower.followername}}</td>
+            <td><a href="{% url 'deletefollower' follower=follower.followername %}"><img src="{% static 'images\icons\icons8-trash.svg' %}" alt=""></a></td>
+            {% endfor %}
+        </tr>
+        </table>
+
+
+
+        
+        
+    </div>
+
+    <!-- <div id="followingdiv">
+        <table id="followingtable">
+            <tr>
+                <th>
+                    profile
+                </th>
+                <th>
+                    following
+                </th>
+            </tr>
+            <tr>
+                <td>
+            {% for account in followingdetail %}
+            
+            {% if account.followingaccount %}
+                
+            {% for every in account.followingaccount %}
+             {% if every.profileimage %}
+             
+            <td><img src="{{ every.profileimage.url }}" alt="" class="profilepic"></td>
+            {% else %}
+            <td><img src="{% static 'images\usericon.png' %}" alt="" class="profilepic"></td>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            <td><img src="{% static 'images\usericon.png' %}" alt="" class="profilepic"></td>
+        
+            {% endif %}
+            
+            
+            
+            <td>{{account.followingname}}</td>
+            {% endfor %}
+        
+            </tr>
+
+        </table>
+    </div> -->
+
+
+    <div id="followingdiv">
+        <table id="followingtable">
+            <tr>
+                <th>
+                    Profile
+                </th>
+                <th>
+                    Following
+                </th>
+                <th>
+                    Delete
+                </th>
+            </tr>
+            <tr>
+                {% for acc in followingdetail %}
+                <tr>
+                    {% if acc.followingaccount %}
+                    {% for every in acc.followingaccount %}
+                    {% if every.profileimage %}
+                    <td><img src="{{ every.profileimage.url }}" alt="" class="profilepic"></td>
+                    {% else %}
+            <td><img src="{% static 'images\usericon.png' %}" alt="" class="profilepic"></td>
+                    {% endif %}
+                    {% endfor %}
+                    {% else %}
+            <td><img src="{% static 'images\usericon.png' %}" alt="" class="profilepic"></td>
+            
+                    {% endif %}
+
+                <td>{{acc.followingname}}</td>
+                <td><a href="{% url 'deletefollowing' followin=acc.followingname %}"><img src="{% static 'images\icons\icons8-trash.svg' %}" alt=""></a></td>
+                {% endfor %}
+
+                </tr>
+                
+                
+
+            </tr>
+            </table>
+            </div>
+    
+
+</div>
+<div id="tablesdiv">
+    <div class="tablediv">
+        <table>
+            <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Completed</th>
+                <th>Score</th>
+                <th>Delete</th>
+            </tr>
+            
+        {% for Book in Bookscompleted %}
+        <tbody>
+        <tr>
+        <td><img src="{{Book.image}}" alt="" class="Thumbnail"></td>
+        <td><a href="{% url 'Bookdbpage' id=Book.Bookid %}">{{Book.title}}</a></td>
+        <td>{{Book.author}}</td>
+        <td>{{Book.status}}</td>
+        <td>{{Book.score}}</td>
+        <td><a href="{% url 'statusuploaddelete' id=Book.Bookid %}"><img src="{% static 'images\icons\icons8-trash.svg' %}" alt=""></a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        
+        </table>
+    </div>
+    
+    <div class="tablediv">
+        <table>
+            <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Reading</th>
+                <th>Score</th>
+                <th>Delete</th>
+            </tr>
+            
+        {% for Book in Booksreading %}
+        <tbody>
+        <tr>
+        <td><img src="{{Book.image}}" alt="" class="Thumbnail"></td>
+        
+        <td><a href="{% url 'Bookdbpage' id=Book.Bookid %}">{{Book.title}}</a></td>
+        <td>{{Book.author}}</td>
+        <td>{{Book.status}}</td>
+        <td>{{Book.score}}</td>
+        <td><a href="{% url 'statusuploaddelete' id=Book.Bookid %}"><img src="{% static 'images\icons\icons8-trash.svg' %}" alt=""></a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        
+        </table>
+    </div>
+    <div class="tablediv">
+        <table>
+            <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Planning</th>
+                <th>Score</th>
+                <th>Delete</th>
+            </tr>
+            
+        {% for Book in Booksplanning %}
+        <tbody>
+        <tr>
+        <td><img src="{{Book.image}}" alt="" class="Thumbnail"></td>
+        <td><a href="{% url 'Bookdbpage' id=Book.Bookid %}">{{Book.title}}</a></td>
+        <td>{{Book.author}}</td>
+        <td>{{Book.status}}</td>
+        <td>{{Book.score}}</td>
+        <td><a href="{% url 'statusuploaddelete' id=Book.Bookid %}"><img src="{% static 'images\icons\icons8-trash.svg' %}" alt=""></a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        
+        </table>
+    </div>
+    <div class="tablediv">
+        <table>
+            <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Dropped</th>
+                <th>Score</th>
+                <th>Delete</th>
+            </tr>
+            
+        {% for Book in Booksdropped %}
+        <tbody>
+        <tr>
+        <td><img src="{{Book.image}}" alt="" class="Thumbnail"></td>
+        <td><a href="{% url 'Bookdbpage' id=Book.Bookid %}">{{Book.title}} </a></td>
+        <td>{{Book.author}}</td>
+        <td> {{Book.status}}</td>
+        <td>{{Book.score}}</td>
+        <td><a href="{% url 'statusuploaddelete' id=Book.Bookid %}"><img src="{% static 'images\icons\icons8-trash.svg' %}" alt=""></a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'script\profile.js'%}"></script>
+{% endblock %}
+
+{% block prof %}
+{% if profilecount > 0 %}
+{% for each in profilepic %}
+{% if each.profileimage %}
+<a href="{% url 'profile' %}"><img src="{{ each.profileimage.url }}" alt="" id="profileicon"></a>
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endfor %}
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endblock %}

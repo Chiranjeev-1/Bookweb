@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles\landing_page.css' %}">
+<link href="https://fonts.cdnfonts.com/css/berlin-sans-fb-demi" rel="stylesheet">
+{% endblock %}
+
+{% block rightheader %}
+
+<a href="{% url 'registeruser' %}"><button id="registerbutton">Register</button></a>
+<a href='{% url "social:begin" "google-oauth2" %}'><button id="signinwithgooglebutton">Sign in with Google</button></a>
+
+
+{% endblock %}
+
+
+{% block content %}
+<div id="maincontainer">
+    <div id="box">
+        <img src="{% static 'images\bust.png' %}" alt="" id="bust">
+        <div id="textbox">
+            <p id="text">
+                “Every day a nigga tryna kill me aahh!”
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<div id="featuresdiv">
+    <div>
+        <img src="{% static 'images\icons\Bookshelf.svg' %}" id="shelficon" alt="" class="icons">
+        <p>
+            Store Your Bookshelf list online!!
+        </p>
+    </div>
+    <div>
+        <img src="{% static 'images\icons\undraw_reviews_lp8w.svg' %}" alt="" id="reviewicon" class="icons">
+        <p>Get your Book reviewed by fellow readers.</p>
+    </div>
+    <div>
+        <img src="{% static 'images\icons\undraw_conversation_re_c26v.svg' %}" alt="" class="icons">
+        <p>Discuss about books and topics on forum.</p>
+    </div>
+    <div>
+        <img src="{% static 'images\icons\community.svg' %}" alt="" class="icons">
+        <p>
+            Join the community and create like minded friends.
+        </p>
+    </div>
+
+</div>
+
+
+
+<div id="Bookgrid">
+    {% for Book in Books %}
+    {% if Book.title != "" %}
+    <div id="Book">
+        <img src="{{Book.imagelink}}" alt="Image could not be loaded">
+
+    <h3>{{Book.author}}</h3>
+    <h4 id="Title" >{{Book.title}}</h4>
+    <h4>{{Book.publisheddate}}</h4>
+    </div>
+
+    {% endif %}
+    {% endfor %}
+
+</div>
+
+
+        
+    
+
+{% endblock %}
+
+
+
+{% block script %}
+<script src="{% static 'script\landing_page.js' %}">
+
+</script>
+{% endblock %}

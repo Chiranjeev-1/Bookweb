@@ -1,0 +1,47 @@
+#Bookdetail{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex: 1;
+    flex-shrink: 1;
+    flex-basis: 500px;
+    row-gap: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 150px;
+    background-color: teal;
+    column-gap: 30px;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+
+    margin-bottom: 10px;
+    
+    
+
+    padding: 30px;
+    
+    
+    
+
+}
+#Bookdetail div{
+    
+    row-gap: 10px;
+}
+#Bookimg{
+    height: 197px;
+    width: 128px;
+}
+
+#Bookdata{
+    display: flex;
+    flex-direction: column;
+    
+}
+#profileicon{
+    height: 40px;
+  width: 40px;
+  border-radius: 50%;
+
+  }
