@@ -79,7 +79,7 @@ document.body.addEventListener('click',function(event)
 
     }
     else{
-        document.getElementById('filteroptions').style.display = "flex";
+        document.getElementById('filteroptions').style.display = "block";
 
     }
 
