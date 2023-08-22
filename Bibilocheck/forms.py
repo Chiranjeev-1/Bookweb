@@ -48,3 +48,13 @@ class Forumdataform(ModelForm):
             'posttitle':forms.TextInput(attrs={'placeholder':'POST TITLE'}),
             'post':forms.TextInput(attrs={'placeholder':'POST Description'})
         }
+
+
+class subscriptionform(ModelForm):
+    class Meta:
+        model = OriginalPOST
+        fields = ["authorname","post","posttype","Bookcover","Synopsis"]
+        widgets = {
+            'Synopsis':forms.TextInput(attrs={'placeholder':'Synopsis'}),
+            
+        }

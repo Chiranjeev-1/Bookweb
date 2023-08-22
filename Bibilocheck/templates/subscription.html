@@ -1,11 +1,54 @@
 {% extends 'home_base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'styles\subscription.css' %}">
 {% endblock %}
 
 {% block content %}
+<div id="mainblock" >
+    <div id="optionsblock">
+        <button class="btnclass">Books created</button>
+        <button class="btnclass">Books Subscribed</button>
+        <button class="btnclass" id="createbook">Create Book</button>
+
+
+    </div>
+    <div id="contentblock">
+        <div id="Bookscreateddiv">
+            <embed src="" type="application/pdf" width="800" height="600">
+                
+        </div>
+
+        <div id="createbookblock">
+            
+            <form action="" method="POST" id="Bookform">
+                {% csrf_token %}
+                <h1>Create your own Book and Upload</h1>
+                <div class="informdiv"> <div><label for="">Authorname</label>  {{Form.authorname|add_class:"authorname"}}</div> <div><label for="">Post-type</label> {{Form.posttype|add_class:"filefield"}}</div></div>
+                <div class="informdiv"><div ><label for="">Post</label> {{Form.post|add_class:""}} </div> <div><label for="">Bookcover</label> {{Form.Bookcover}} </div></div>
+                
+                <div>{{Form.Synopsis|add_class:"Synopsis"}}</div>
+                <div class="informdiv"><Button id="submit">Submit</Button>
+                <button id="close">Close</button>
+                </div>
+                
+
+                
+
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% block script %}
+
+<script src="{% static 'script\subscription.js' %}"></script>
+
+{% endblock %}
 
 
 {% endblock %}
@@ -24,3 +67,4 @@
 <a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
 {% endif %}
 {% endblock %}
+

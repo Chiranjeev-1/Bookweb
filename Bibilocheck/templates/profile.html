@@ -165,6 +165,7 @@
                     {% for every in acc.followingaccount %}
                     {% if every.profileimage %}
                     <td><img src="{{ every.profileimage.url }}" alt="" class="profilepic"></td>
+                    
                     {% else %}
             <td><img src="{% static 'images\usericon.png' %}" alt="" class="profilepic"></td>
                     {% endif %}
@@ -176,7 +177,9 @@
 
                 <td>{{acc.followingname}}</td>
                 <td><a href="{% url 'deletefollowing' followin=acc.followingname %}"><img src="{% static 'images\icons\icons8-trash.svg' %}" alt=""></a></td>
+                
                 {% endfor %}
+                
 
                 </tr>
                 

@@ -76,6 +76,10 @@ class OriginalPOST(models.Model):
     
 
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    post = models.TextField(max_length=1000000,blank=True,null=True)
+    post = models.FileField(upload_to='pdfs/',blank=True,null=True)
     posttype = models.CharField(max_length=255, choices=CHOICES)
+    Bookcover = models.ImageField(upload_to='images/',blank=True,null=True)
+    Synopsis = models.TextField(max_length=10000,blank=True,null=True)
+    upload_date = models.DateField(default=timezone.now,blank=True,null=True)
+    authorname = models.CharField(max_length=255,blank=True,null=True)
 
