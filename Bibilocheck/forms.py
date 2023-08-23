@@ -53,7 +53,7 @@ class Forumdataform(ModelForm):
 class subscriptionform(ModelForm):
     class Meta:
         model = OriginalPOST
-        fields = ["authorname","post","posttype","Bookcover","Synopsis"]
+        fields = ["authorname","post","posttype","Bookcover","Synopsis","Booktitle"]
         widgets = {
             'Synopsis':forms.TextInput(attrs={'placeholder':'Synopsis'}),
             

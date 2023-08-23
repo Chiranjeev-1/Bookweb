@@ -645,9 +645,13 @@ def forum(request):
 
 def subscription(request):
     Form = subscriptionform()
-    data = OriginalPOST.objects.filter(user=request.user).values()[0]
+    data = OriginalPOST.objects.filter(user=request.user)
+    # pdffile = OriginalPOST.objects.filter(user=request.user)[0]
+    # pdffileurl = pdffile.post.url
+
+    # print("path::" + pdffile.post.path)
     if request.method == "POST":
-        OriginalPOST.objects.create(user=request.user,post=request.POST.get("post"),posttype=request.POST.get("posttype"),Bookcover=request.POST.get("Bookcover"),Synopsis=request.POST.get("Synopsis"),authorname=request.POST.get("authorname"))
+        OriginalPOST.objects.create(user=request.user,post=request.FILES.get("post"),posttype=request.POST.get("posttype"),Bookcover=request.FILES.get("Bookcover"),Synopsis=request.POST.get("Synopsis"),authorname=request.POST.get("authorname"),Booktitle = request.POST.get("Booktitle"))
         return redirect('subscription')
     profilei = Bio.objects.filter(user=request.user)
     print(Bio.objects.filter(user=request.user).values())
@@ -661,6 +665,8 @@ def subscription(request):
         "profilepic":profilei,
         "profilecount":profilecount,
         "Form":Form,
-        "data":data
+        "data":data,
+        # "pdffile":pdffileurl,
+
     }
     return render(request,"subscription.html",context)

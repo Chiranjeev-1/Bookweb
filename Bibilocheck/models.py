@@ -82,4 +82,5 @@ class OriginalPOST(models.Model):
     Synopsis = models.TextField(max_length=10000,blank=True,null=True)
     upload_date = models.DateField(default=timezone.now,blank=True,null=True)
     authorname = models.CharField(max_length=255,blank=True,null=True)
+    Booktitle = models.CharField(max_length=255,blank=True,null=True)
 
