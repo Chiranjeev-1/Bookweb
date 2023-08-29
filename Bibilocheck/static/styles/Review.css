@@ -1,0 +1,76 @@
+
+#mainblock{
+    /* padding-top: 200px; */
+}
+#reviewtitle{
+    color:rgb(229, 83, 83) ;
+}
+#reviewtitle:before{
+    background-color: rgb(229, 83, 83);
+    
+}
+#Bookcover{
+    height: 300px;
+    width: 230px;
+}
+
+#Bookobjectblock{
+    background-color: whitesmoke;
+    height: fit-content;
+    padding: 10px 10px;
+    text-align: center;
+    /* box-shadow: 5px 5px 0px lightgray; */
+    cursor: pointer;
+    
+}
+#Bookobjectblock:hover{
+    background-color:lightseagreen ;
+}
+.section{
+        
+    color: rgb(229, 83, 83);
+    font-size: 16px;
+    font-family: monospace;
+}
+h4{
+    display: flex;
+    text-align: center;
+    column-gap: 5px;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+#Bookscreateddiv{
+    padding-top: 120px; 
+    display: flex;
+    row-gap: 20px;
+    column-gap: 20px;
+    flex: 1 1 300px ;
+    margin-left: 20px;
+    flex-wrap: wrap;
+    
+}
+#subscribe{
+    width: 100%;
+    margin: 5px 0px;
+    padding: 5px 0;
+    border: none;
+    background-color:rgb(229, 83, 83) ;
+    color: white;
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+#subscribe:hover{
+    background-color: rgba(229, 83, 83, 0.8);
+}
+#subscribe:active7{
+    background-color: rgb(0, 0, 82);
+}
+#profileicon{
+    height: 40px;
+  width: 40px;
+  border-radius: 50%;
+
+  }

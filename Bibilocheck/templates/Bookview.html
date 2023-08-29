@@ -1,0 +1,56 @@
+{% extends 'home_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+<div id="mainblock">
+    
+    {% for each in data %}
+    <div id="headerblock">
+        
+            <img src="{{each.Bookcover.url}}" alt="" id="Bookcover">
+        
+        <div>
+            <p>{{each.Synopsis}}</p>
+        <h4>BookName: {{each.Booktitle}}</h4>
+        <h5>AuthorName: {{each.authorname}}</h5>
+        </div>
+        
+    </div>
+    <div id="pdfdiv">
+        <iframe src="{{each.post.url}}" frameborder="0"></iframe>
+    </div>
+    
+
+    {% endfor %}
+
+
+
+
+    
+
+</div>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles\Bookview.css' %}">
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'script\Bookview.js' %}"></script>
+{% endblock %}
+
+{% block prof %}
+{% if profilecount > 0 %}
+{% for each in profilepic %}
+{% if each.profileimage %}
+<a href="{% url 'profile' %}"><img src="{{ each.profileimage.url }}" alt="" id="profileicon"></a>
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endfor %}
+{% else %}
+<a href="{% url 'profile' %}"><img src="{% static 'images\usericon.png' %}" alt="" id="profileicon"></a>
+{% endif %}
+{% endblock %}
