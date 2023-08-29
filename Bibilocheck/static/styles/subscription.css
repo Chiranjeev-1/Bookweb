@@ -36,7 +36,7 @@
     position: fixed;
     justify-content: center;
     align-items: center;
-    background-color: transparent;
+
     z-index: 1;
     backdrop-filter: blur(5px);
     width: 100%;
@@ -58,6 +58,9 @@
     column-gap: 150px;
     display: flex;
     flex-direction: column;
+    background-color: white;
+    padding: 30px 80px;
+
 
 }
 h1{
