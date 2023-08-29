@@ -73,6 +73,8 @@ class OriginalPOST(models.Model):
         ('Poem','Poem'),
          ('other',"other")
     )
+    UP_FOR_REVIEW = (('Yes','Yes'),
+                     ('NO','No'))
     
 
     user = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -83,4 +85,10 @@ class OriginalPOST(models.Model):
     upload_date = models.DateField(default=timezone.now,blank=True,null=True)
     authorname = models.CharField(max_length=255,blank=True,null=True)
     Booktitle = models.CharField(max_length=255,blank=True,null=True)
+    UpforReview = models.CharField(max_length=255,choices=UP_FOR_REVIEW,blank=True,null=True)
 
+
+class Subscribe(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    postby = models.CharField(max_length=255,blank=True,null=True)
+    postname = models.CharField(max_length=255,blank=True,null=True)

@@ -644,6 +644,15 @@ def forum(request):
 
 
 def subscription(request):
+    subscribedposts = Subscribe.objects.filter(user=request.user).values_list('postby','postname')
+    posts = []
+    
+    for postby,postname in subscribedposts: 
+        posts.append(OriginalPOST.objects.filter(user=postby).filter(Booktitle=postname)[0])
+        
+        
+
+        
     Form = subscriptionform()
     data = OriginalPOST.objects.filter(user=request.user)
     # pdffile = OriginalPOST.objects.filter(user=request.user)[0]
@@ -651,10 +660,10 @@ def subscription(request):
 
     # print("path::" + pdffile.post.path)
     if request.method == "POST":
-        OriginalPOST.objects.create(user=request.user,post=request.FILES.get("post"),posttype=request.POST.get("posttype"),Bookcover=request.FILES.get("Bookcover"),Synopsis=request.POST.get("Synopsis"),authorname=request.POST.get("authorname"),Booktitle = request.POST.get("Booktitle"))
+        OriginalPOST.objects.create(user=request.user,post=request.FILES.get("post"),posttype=request.POST.get("posttype"),Bookcover=request.FILES.get("Bookcover"),Synopsis=request.POST.get("Synopsis"),authorname=request.POST.get("authorname"),Booktitle = request.POST.get("Booktitle"),UpforReview = request.POST.get("UpforReview"))
         return redirect('subscription')
     profilei = Bio.objects.filter(user=request.user)
-    print(Bio.objects.filter(user=request.user).values())
+    
     profilecount = profilei.count()
     if profilecount > 0:
         for each in profilei.values_list("profileimage",flat=True):
@@ -667,6 +676,57 @@ def subscription(request):
         "Form":Form,
         "data":data,
         # "pdffile":pdffileurl,
+        "posts":posts
 
     }
     return render(request,"subscription.html",context)
+
+
+def review(request):
+    objects = OriginalPOST.objects.filter(UpforReview = "Yes")
+    user = request.user.id
+    profilei = Bio.objects.filter(user=request.user)
+    
+    profilecount = profilei.count()
+    if profilecount > 0:
+        for each in profilei.values_list("profileimage",flat=True):
+            if each != "":
+                profileimg = each
+    print(user)
+    context = {
+        'objects':objects,
+        'user':user,
+        "profilepic":profilei,
+        "profilecount":profilecount,
+
+    }
+    return render(request,"Review.html",context)
+
+def subscribe(request,postby,postname):
+    if not Subscribe.objects.filter(user=request.user).filter(postby=postby).filter(postname=postname):
+        Subscribe.objects.create(user=request.user,postby=postby,postname=postname)
+    Notifs.objects.create(user=request.user,notifstatement="You subscribed to" + postname, notifby =postby )
+    return redirect('review')
+
+
+def Bookview(request,Bookname,Bookby):
+    data = OriginalPOST.objects.filter(Booktitle=Bookname).filter(user=Bookby)
+    print(data)
+
+    profilei = Bio.objects.filter(user=request.user)
+    
+    profilecount = profilei.count()
+    if profilecount > 0:
+        for each in profilei.values_list("profileimage",flat=True):
+            if each != "":
+                profileimg = each
+    
+    context= {
+        'data':data,
+        "profilepic":profilei,
+        "profilecount":profilecount,
+        
+
+    }
+
+    return render(request,'Bookview.html',context)

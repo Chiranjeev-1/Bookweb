@@ -10,4 +10,4 @@ admin.site.register(Bio)
 admin.site.register(following)
 admin.site.register(Forumdata)
 admin.site.register(OriginalPOST)
-
+admin.site.register(Subscribe)

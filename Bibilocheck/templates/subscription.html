@@ -9,27 +9,48 @@
 {% block content %}
 <div id="mainblock" >
     <div id="optionsblock">
-        <button class="btnclass">Books created</button>
-        <button class="btnclass">Books Subscribed</button>
+        <button class="btnclass" id="createdbook">Books created</button>
+        <button class="btnclass" id="bookssubscribed">Books Subscribed</button>
         <button class="btnclass" id="createbook">Create Book</button>
 
 
     </div>
     <div id="contentblock">
+
+        <div id="subscribedblock" >
+            {% for each in posts %}
+            <a href="{% url 'Bookview' Bookname=each.Booktitle Bookby=each.user.id  %}">
+                <div id="Bookobjectblock">
+                {% if each.Bookcover %}
+            <img src="{{each.Bookcover.url}}" alt="fail" id="Bookcover">
+            {% else %}
+            <img src="{% static 'images\No-Image-Placeholder.svg.png' %}" alt="" id="Bookcoverplaceholder">
+            {% endif %}
+            <h4><p class="section">Author:</p> {{each.authorname}}</h4>
+            <h4><p class="section">Name:</p> {{each.Booktitle}}</h4>
+
+            </div></a>
+            
+            {% endfor %}
+
+
+        </div>
         <div id="Bookscreateddiv">
             <!-- <iframe src="{{pdffile}}" frameborder="0"></iframe> -->
             
                 {% for each in data %}
-                <div id="Bookobjectblock">
-                    {% if each.Bookcover %}
-                <img src="{{each.Bookcover.url}}" alt="fail" id="Bookcover">
-                {% else %}
-                <img src="{% static 'images\No-Image-Placeholder.svg.png' %}" alt="" id="Bookcoverplaceholder">
-                {% endif %}
-                <h4><p class="section">Author:</p> {{each.authorname}}</h4>
-                <h4><p class="section">Name:</p> {{each.Booktitle}}</h4>
-
-                </div>
+                <a href="{% url 'Bookview' Bookname=each.Booktitle Bookby=each.user.id  %}">
+                    <div id="Bookobjectblock">
+                        {% if each.Bookcover %}
+                    <img src="{{each.Bookcover.url}}" alt="fail" id="Bookcover">
+                    {% else %}
+                    <img src="{% static 'images\No-Image-Placeholder.svg.png' %}" alt="" id="Bookcoverplaceholder">
+                    {% endif %}
+                    <h4><p class="section">Author:</p> {{each.authorname}}</h4>
+                    <h4><p class="section">Name:</p> {{each.Booktitle}}</h4>
+    
+                    </div>
+                </a>
                 {% endfor %}
 
             
@@ -44,7 +65,7 @@
                 <h1>Create your own Book and Upload</h1>
                 
                 <div class="informdiv"> <div><label for="">Authorname</label>  {{Form.authorname|add_class:"authorname"}}</div> <div><label for="">Post-type</label> {{Form.posttype|add_class:"filefield"}}</div></div>
-                <div style="display: flex; justify-content: center;">Bookname: {{Form.Booktitle|add_class:"authornames"}}</div>
+                <div style="display: flex; justify-content: space-between;"><div>Bookname: {{Form.Booktitle|add_class:"authornames"}}</div> <div><label for="">Up for Review?</label>{{Form.UpforReview}}</div> </div>
                 <div class="informdiv"><div ><label for="">Post</label> {{Form.post|add_class:""}} </div> <div><label for="">Bookcover</label> {{Form.Bookcover}} </div></div>
                 
                 <div>{{Form.Synopsis|add_class:"Synopsis"}}</div>

@@ -206,3 +206,18 @@ h4{
     font-family: monospace;
     font-size: 16px;
 }
+#subscription{
+    
+    color: rgb(229, 83, 83);
+}
+#subscription:before{
+    background-color:rgb(229, 83, 83) ;
+
+}
+#subscribedblock{
+    padding-top: 120px;
+    display: none;
+}
+#createdbook{
+    color: rgb(229, 83, 83);
+}

@@ -21,6 +21,9 @@ urlpatterns = [
     path('deletefollower/<str:follower>',views.deletefollower,name='deletefollower'),
     path('deletefollowing/<str:followin>',views.deletefollowing,name="deletefollowing"),
     path("Forum/",views.forum,name="forum"),
-    path("subscription/",views.subscription,name="subscription")
+    path("subscription/",views.subscription,name="subscription"),
+    path("Review/",views.review,name="review"),
+    path('subscribe/<str:postby>/<str:postname>',views.subscribe,name="subscribe"),
+    path('Bookview/<str:Bookby>/<str:Bookname>',views.Bookview,name="Bookview")
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
