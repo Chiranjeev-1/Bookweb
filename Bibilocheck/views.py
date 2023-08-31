@@ -1,17 +1,16 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login,logout
-from django.contrib.auth import logout
-from django.contrib.auth.forms import UserCreationForm
+
 from .forms import *
 from .models import *
 from django.contrib import messages
 import random
 import requests
-from django.http import HttpResponse
+
 from django.contrib.auth.models import User
 import json
-from django.db import models
+
 from django.utils import timezone
 # Create your views here.
 
@@ -220,6 +219,7 @@ def registeruser(request):
     }
     return render(request,'registeruser.html',context)
 
+@login_required(login_url="home")
 def searchresultpage(request):
     searchquery = request.POST.get("search_input")
     
@@ -319,7 +319,7 @@ def searchresultpage(request):
             "profilecount":profilecount
         }
         return render(request,"usersearch.html",context)
-    
+@login_required(login_url="home")
 def Bookpage(request,value):
     Form = statusuploadform()
     Books = request.session["Books"]
@@ -373,7 +373,7 @@ def Bookpage(request,value):
 
     }
     return render(request,'Bookpage.html',context)
-
+@login_required(login_url="home")
 def followrequest(request,profile):
     
 
@@ -392,7 +392,7 @@ def followrequest(request,profile):
                 messages.error(request,"couldn't follow")
                 return redirect('home')
             
-
+@login_required(login_url="home")
 def lists(request):
 
     Bookscompleted = Statusupload.objects.all().filter(reader=request.user).filter(status="completed").values()
@@ -413,7 +413,7 @@ def lists(request):
     }
     return render(request,"lists.html",context)
 
-
+@login_required(login_url="home")
 def Bookdbpage(request,id):
     Book = Statusupload.objects.all().filter(reader=request.user).filter(Bookid=id).values()[0]
 
@@ -428,7 +428,7 @@ def Bookdbpage(request,id):
     }
     return render(request,'Bookdbpage.html',context)
 
-
+@login_required(login_url="home")
 def statusuploaddelete(request,id):
     
 
@@ -437,7 +437,7 @@ def statusuploaddelete(request,id):
 
     return redirect("lists")
 
-
+@login_required(login_url="home")
 def followaccept(request,profile):
     followers.objects.create(user=request.user,follower=profile)
     Notifs.objects.filter(notifby=profile).delete()
@@ -445,7 +445,7 @@ def followaccept(request,profile):
     following.objects.filter(user=User.objects.get(username=profile)).create(user=User.objects.get(username=profile),following=request.user.username)
     return redirect('home')
 
-
+@login_required(login_url="home")
 def profile(request):
 
     form = Bioform()
@@ -597,18 +597,18 @@ def profile(request):
 
     return render(request,"profile.html",context)
 
-
+@login_required(login_url="home")
 def deletefollower(request,follower):
     followers.objects.filter(user=request.user).filter(follower=follower).delete()
     following.objects.filter(user=User.objects.get(username=follower)).filter(following=request.user.username).delete()
     return redirect('profile')
 
-
+@login_required(login_url="home")
 def deletefollowing(request,followin):
     followers.objects.filter(user=User.objects.get(username=followin)).filter(follower=request.user.username).delete()
     following.objects.filter(user=request.user).filter(following=followin).delete()
     return redirect('profile')
-
+@login_required(login_url="home")
 def forum(request):
     form = Forumdataform()
     profilei = Bio.objects.filter(user=request.user)
@@ -642,7 +642,7 @@ def forum(request):
     }
     return render(request,"forum.html",context)
 
-
+@login_required(login_url="home")
 def subscription(request):
     subscribedposts = Subscribe.objects.filter(user=request.user).values_list('postby','postname')
     posts = []
@@ -681,7 +681,7 @@ def subscription(request):
     }
     return render(request,"subscription.html",context)
 
-
+@login_required(login_url="home")
 def review(request):
     objects = OriginalPOST.objects.filter(UpforReview = "Yes")
     user = request.user.id
@@ -701,14 +701,14 @@ def review(request):
 
     }
     return render(request,"Review.html",context)
-
+@login_required(login_url="home")
 def subscribe(request,postby,postname):
     if not Subscribe.objects.filter(user=request.user).filter(postby=postby).filter(postname=postname):
         Subscribe.objects.create(user=request.user,postby=postby,postname=postname)
     Notifs.objects.create(user=request.user,notifstatement="You subscribed to" + postname, notifby =postby )
     return redirect('review')
 
-
+@login_required(login_url="home")
 def Bookview(request,Bookname,Bookby):
     data = OriginalPOST.objects.filter(Booktitle=Bookname).filter(user=Bookby)
     print(data)
