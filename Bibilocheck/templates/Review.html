@@ -5,6 +5,7 @@
 {% block content %}
 
 <div id="mainblock">
+    <h1>Books Up For Review</h1>
     <div id="Bookscreateddiv">
         {% for each in objects %}
     <a href="{% url 'Bookview' Bookname=each.Booktitle Bookby=each.user.id  %}">
