@@ -15,7 +15,7 @@ from django.utils import timezone
 # Create your views here.
 
 
-def landing_page(request):
+def index(request):
     novel = "a"
     api = f"https://www.googleapis.com/books/v1/volumes?"
     li = ["Art",
@@ -190,7 +190,7 @@ def home(request):
 @login_required(login_url="home")
 def logoutuser(request):
     logout(request)
-    return redirect('landing_page')
+    return redirect('index')
 
 
 def loginpage(request):
